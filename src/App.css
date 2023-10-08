@@ -1,42 +1,65 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: white;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+body {
+  font-family: "Inter", sans-serif;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.heading-xl {
+  font-size: 12.5rem;
+  font-weight: 700;
+  line-height: 200px;
+  letter-spacing: -5px;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.heading-l {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 68px;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.heading-m {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 4.8px;
+  text-transform: uppercase;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.heading-s {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 4px;
 }
-
-.card {
-  padding: 2em;
+.heading-s-b {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 28px;
 }
-
-.read-the-docs {
-  color: #888;
+.heading-xs {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 3px;
+}
+.time-zone {
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 28px;
+}
+.body {
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 28px;
+}
+.custom-tracking {
+  letter-spacing: -2.5px;
+}
+.custom-tracking-wide {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.btn-spacing {
+  letter-spacing: 5px;
 }

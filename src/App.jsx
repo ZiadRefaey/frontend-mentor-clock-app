@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import "./App.css";
+import Quote from "./Quote";
+import Clock from "./Clock";
+import { useState, useEffect } from "react";
 function App() {
-  const [count, setCount] = useState(0)
+  const [screenWidth, setScreenWidth] = useState(screen.width);
+  useEffect(() => {
+    function handleResize() {
+      setScreenWidth(screen.width);
+    }
 
+    window.addEventListener("resize", handleResize);
+    console.log(screenWidth);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [screenWidth]);
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div
+        style={
+          screenWidth < 620
+            ? { backgroundImage: "url('/mobile/bg-image-daytime.jpg')" }
+            : { backgroundImage: "url('/desktop/bg-image-daytime.jpg')" }
+        }
+        className="flex items-start justify-between flex-col w-[100vw] h-[100vh] overflow-y-hidden px-[26px] bg-cover bg-no-repeat py-9 md:px-16 md:py-20 md:pb-16 lg:px-[165px] lg:py-14 lg:pb-[98px] pb-16 relative before:content-[''] before:absolute before:top-0 before:left-0 before:bg-black before:w-full before:h-full z-10 before:opacity-50 before:-z-10"
+      >
+        <Quote />
+        <Clock />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
