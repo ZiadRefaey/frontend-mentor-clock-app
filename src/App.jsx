@@ -14,7 +14,7 @@ function App() {
   const [backgroundImage, setBackGroundImage] = useState("");
 
   const ipBase = new Ipbase(
-    "ipb_live_81XU5K6OvSRhqwdRTbIMLhj5vQzJgOLUpFeBSSq0"
+    "ipb_live_UlrnD8zA3Gwd8KdcVWHj3xkfryhQ4sH67Q1aRjkX"
   );
   async function fetchIpInfo() {
     try {
@@ -58,7 +58,7 @@ function App() {
       async function fetchWorldTime() {
         if (ipCords && ipCords.timezone) {
           const response = await fetch(
-            `https://worldtimeapi.org/api/timezone/${ipCords.timezone.id}`
+            `http://worldtimeapi.org/api/timezone/${ipCords.timezone.id}`
           );
           const data = await response.json();
           setWorldTimeDetails(data);
