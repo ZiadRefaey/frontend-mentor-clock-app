@@ -1,4 +1,9 @@
-export default function TimeDetails({ isClicked, timeDetailsHeight }) {
+export default function TimeDetails({
+  isClicked,
+  timeDetailsHeight,
+  ipCords,
+  worldTimeDetails,
+}) {
   return (
     <>
       <div
@@ -20,7 +25,7 @@ export default function TimeDetails({ isClicked, timeDetailsHeight }) {
               CURRENT TIMEZONE
             </p>
             <p className=" text-darkGrey text-lg font-bold md:text-4xl xl:text-5xl self-center md:self-start">
-              Europe/Londone
+              {ipCords?.timezone?.id}
             </p>
           </div>
 
@@ -29,7 +34,7 @@ export default function TimeDetails({ isClicked, timeDetailsHeight }) {
               DAY OF THE YEAR
             </p>
             <p className=" text-darkGrey text-lg font-bold md:text-4xl xl:text-5xl self-center md:self-start">
-              295
+              {worldTimeDetails?.day_of_year}
             </p>
           </div>
         </div>
@@ -40,7 +45,7 @@ export default function TimeDetails({ isClicked, timeDetailsHeight }) {
               DAY OF THE WEEK
             </p>
             <p className=" text-darkGrey text-lg font-bold md:text-4xl xl:text-5xl self-center md:self-start">
-              5
+              {worldTimeDetails?.day_of_week}
             </p>
           </div>
 
@@ -49,7 +54,7 @@ export default function TimeDetails({ isClicked, timeDetailsHeight }) {
               WEEK NUMBER
             </p>
             <p className=" text-darkGrey text-lg font-bold md:text-4xl xl:text-5xl self-center md:self-start">
-              42
+              {worldTimeDetails?.week_number}
             </p>
           </div>
         </div>

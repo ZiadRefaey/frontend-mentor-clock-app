@@ -1,12 +1,51 @@
 import Button from "./Button";
 import "./App.css";
 import Sun from "./assets/icon-sun.svg";
+import { useState, useEffect } from "react";
 export default function Clock({
+  ipCords,
+  worldTimeDetails,
   isClicked,
   setIsClicked,
   screenWidth,
   timeDetailsHeight,
 }) {
+  const [time, setTime] = useState("");
+  const [greetingWord, setGreetingWord] = useState("");
+  useEffect(function () {
+    function updateCurrentTime() {
+      const date = new Date();
+      let hour = date.getHours();
+      let minute = date.getMinutes();
+      if (hour >= 5 && hour < 13) {
+        setGreetingWord("MORNING");
+      }
+      if (hour >= 13 && hour < 19) {
+        setGreetingWord("AFTERNOON");
+      }
+
+      if (hour >= 19 || hour < 5) {
+        setGreetingWord("NIGHT");
+      }
+
+      if (hour == 0) {
+        hour = 12;
+      }
+      if (hour > 12) {
+        hour = hour - 12;
+        session = "PM";
+      }
+
+      hour = hour < 10 ? "0" + hour : hour;
+      minute = minute < 10 ? "0" + minute : minute;
+
+      setTime(`${hour}:${minute}`);
+    }
+    updateCurrentTime();
+    const intervalId = setInterval(updateCurrentTime, 1000);
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <>
       <div
@@ -26,16 +65,17 @@ export default function Clock({
             </div>
             <div className="text-sm leading-6 md:text-lg  text-white h-full self-center">
               {screenWidth < 768
-                ? "GOOD MORNING"
-                : "GOOD MORNING, ITS CURRENTLY"}
+                ? { greetingWord }
+                : `GOOD ${greetingWord}, ITS CURRENTLY`}
             </div>
           </div>
           <h1 className="zone-font">
-            <span className="clock-font lg:bg-inherit">11:37</span>
-            BST
+            <span className="clock-font lg:bg-inherit mr-2">{time}</span>
+            {ipCords?.timezone?.code}
           </h1>
           <h3 className="text-sm font-bold custom-tracking-wide md:text-lg lg:text-2xl w-full ">
-            in london, uk
+            in {ipCords?.location?.region?.name},&nbsp;
+            {ipCords?.location?.country?.alpha2}
           </h3>
         </div>
         <div className="lg:self-end">
