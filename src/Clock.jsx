@@ -1,6 +1,7 @@
 import Button from "./Button";
 import "./App.css";
 import Sun from "./assets/icon-sun.svg";
+import Moon from "./assets/icon-moon.svg";
 import { useState, useEffect } from "react";
 export default function Clock({
   ipCords,
@@ -12,6 +13,7 @@ export default function Clock({
 }) {
   const [time, setTime] = useState("");
   const [greetingWord, setGreetingWord] = useState("");
+  const [greetingIcon, setGreetingIcon] = useState("");
   useEffect(function () {
     function updateCurrentTime() {
       const date = new Date();
@@ -19,6 +21,7 @@ export default function Clock({
       let minute = date.getMinutes();
       if (hour >= 5 && hour < 13) {
         setGreetingWord("MORNING");
+        setGreetingIcon(Sun);
       }
       if (hour >= 13 && hour < 19) {
         setGreetingWord("AFTERNOON");
@@ -26,6 +29,7 @@ export default function Clock({
 
       if (hour >= 19 || hour < 5) {
         setGreetingWord("NIGHT");
+        setGreetingIcon(Moon);
       }
 
       if (hour == 0) {
@@ -61,7 +65,11 @@ export default function Clock({
         <div className="flex gap-4 items-start justify-start flex-col">
           <div className="w-full flex items-start gap-4">
             <div className="w-6 h-6 object-contain">
-              <img src={Sun} className="w-full h-full" alt="sun icon" />
+              <img
+                src={greetingIcon}
+                className="w-full h-full"
+                alt="sun icon"
+              />
             </div>
             <div className="text-sm leading-6 md:text-lg  text-white h-full self-center">
               {screenWidth < 768
