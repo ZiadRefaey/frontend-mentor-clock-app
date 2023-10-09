@@ -32,21 +32,21 @@ function App() {
     function () {
       const currentTime = new Date();
       const currentHour = currentTime.getHours();
-      currentHour > 6 &&
+      currentHour >= 5 &&
         currentHour < 20 &&
         screenWidth < 620 &&
         setBackGroundImage("url('/mobile/bg-image-daytime.jpg')");
 
-      currentHour > 6 &&
+      currentHour >= 5 &&
         currentHour < 20 &&
         screenWidth >= 620 &&
         setBackGroundImage("url('/desktop/bg-image-daytime.jpg')");
 
-      (currentHour < 6 || currentHour > 20) &&
-        screenWidth < 620 &&
+      (currentHour < 5 || currentHour > 20) &&
+        screenWidth < 520 &&
         setBackGroundImage("url('/mobile/bg-image-nighttime.jpg')");
 
-      (currentHour < 6 || currentHour > 20) &&
+      (currentHour < 5 || currentHour > 20) &&
         screenWidth >= 620 &&
         setBackGroundImage("url('/desktop/bg-image-nighttime.jpg')");
     },
