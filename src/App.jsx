@@ -33,20 +33,20 @@ function App() {
       const currentTime = new Date();
       const currentHour = currentTime.getHours();
       currentHour >= 5 &&
-        currentHour < 20 &&
+        currentHour < 19 &&
         screenWidth < 620 &&
         setBackGroundImage("url('/mobile/bg-image-daytime.jpg')");
 
       currentHour >= 5 &&
-        currentHour < 20 &&
+        currentHour < 19 &&
         screenWidth >= 620 &&
         setBackGroundImage("url('/desktop/bg-image-daytime.jpg')");
 
-      (currentHour < 5 || currentHour > 20) &&
+      (currentHour < 5 || currentHour >= 19) &&
         screenWidth < 520 &&
         setBackGroundImage("url('/mobile/bg-image-nighttime.jpg')");
 
-      (currentHour < 5 || currentHour > 20) &&
+      (currentHour < 5 || currentHour >= 19) &&
         screenWidth >= 620 &&
         setBackGroundImage("url('/desktop/bg-image-nighttime.jpg')");
     },
