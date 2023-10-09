@@ -37,7 +37,6 @@ export default function Clock({
       }
       if (hour > 12) {
         hour = hour - 12;
-        session = "PM";
       }
 
       hour = hour < 10 ? "0" + hour : hour;
