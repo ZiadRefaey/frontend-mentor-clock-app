@@ -25,6 +25,7 @@ export default function Clock({
       }
       if (hour >= 13 && hour < 19) {
         setGreetingWord("AFTERNOON");
+        setGreetingIcon(Sun);
       }
 
       if (hour >= 19 || hour < 5) {
