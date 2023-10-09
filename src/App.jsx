@@ -58,7 +58,7 @@ function App() {
       async function fetchWorldTime() {
         if (ipCords && ipCords.timezone) {
           const response = await fetch(
-            `http://worldtimeapi.org/api/timezone/${ipCords.timezone.id}`
+            `https://worldtimeapi.org/api/timezone/${ipCords.timezone.id}`
           );
           const data = await response.json();
           setWorldTimeDetails(data);
