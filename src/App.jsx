@@ -30,12 +30,6 @@ function App() {
 
   useEffect(
     function () {
-      console.log(ipCords);
-    },
-    [ipCords]
-  );
-  useEffect(
-    function () {
       const currentTime = new Date();
       const currentHour = currentTime.getHours();
       currentHour > 6 &&
@@ -64,10 +58,9 @@ function App() {
       async function fetchWorldTime() {
         if (ipCords && ipCords.timezone) {
           const response = await fetch(
-            `http://worldtimeapi.org/api/timezone/${ipCords.timezone.id}`
+            `https://worldtimeapi.org/api/timezone/${ipCords.timezone.id}`
           );
           const data = await response.json();
-          console.log(`world time:`, data);
           setWorldTimeDetails(data);
           setIsLoading(false); // Mark loading as complete
         }
